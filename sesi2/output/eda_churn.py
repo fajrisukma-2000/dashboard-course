@@ -30,7 +30,7 @@ def simpan(fig, nama):
     plt.close(fig) 
   
 # =============== 1. LOAD DATA =============== 
-df = pd.read_csv(ROOT / "sesi2" / "customer_churn.csv", parse_dates=["signup_date"]) 
+df = pd.read_csv(ROOT / "data" / "customer_churn.csv", parse_dates=["signup_date"]) 
 df["status"] = df["churn"].map({0: "Bertahan", 1: "Churn"}) 
   
 # =============== 2. PROFILING =============== 
@@ -63,3 +63,4 @@ churn_kontrak = (df.groupby("contract_type")
 print(churn_kontrak.round(3)) 
 pivot = pd.pivot_table(df, values="churn", index="region", columns="segment", aggfunc="mean") 
 print(pivot.round(3))
+
